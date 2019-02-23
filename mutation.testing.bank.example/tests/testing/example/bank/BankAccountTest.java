@@ -92,4 +92,28 @@ public class BankAccountTest {
 		// verify
 		assertEquals(INITIAL_BALANCE-AMOUNT, bankAccount.getBalance(), 0);
 	}
+
+	@Test
+	public void testDepositWhenAmountIsZeroShouldBeAllowed() {
+		BankAccount bankAccount = new BankAccount();
+		bankAccount.setBalance(INITIAL_BALANCE);
+		bankAccount.deposit(0);
+		assertEquals(INITIAL_BALANCE, bankAccount.getBalance(), 0);
+	}
+
+	@Test
+	public void testWithdrawWhenAmountIsZeroShouldBeAllowed() {
+		BankAccount bankAccount = new BankAccount();
+		bankAccount.setBalance(INITIAL_BALANCE);
+		bankAccount.withdraw(0);
+		assertEquals(INITIAL_BALANCE, bankAccount.getBalance(), 0);
+	}
+
+	@Test
+	public void testWithdrawWhenBalanceIsEqualsToAmountShouldBeAllowed() {
+		BankAccount bankAccount = new BankAccount();
+		bankAccount.setBalance(INITIAL_BALANCE);
+		bankAccount.withdraw(INITIAL_BALANCE);
+		assertEquals(0, bankAccount.getBalance(), 0);
+	}
 }
