@@ -47,12 +47,14 @@ public class BankTest {
 	@Test
 	public void testDepositWhenAccountIsFoundShouldIncrementBalance() {
 		// setup
-		BankAccount testAccount = createTestAccount(INITIAL_BALANCE);
-		bankAccounts.add(testAccount);
+		BankAccount another = createTestAccount(0);
+		bankAccounts.add(another);
+		BankAccount toBeFound = createTestAccount(INITIAL_BALANCE);
+		bankAccounts.add(toBeFound);
 		// exercise
-		bank.deposit(testAccount.getId(), AMOUNT);
+		bank.deposit(toBeFound.getId(), AMOUNT);
 		// verify
-		assertEquals(INITIAL_BALANCE+AMOUNT, testAccount.getBalance(), 0);
+		assertEquals(INITIAL_BALANCE + AMOUNT, toBeFound.getBalance(), 0);
 	}
 
 	@Test
